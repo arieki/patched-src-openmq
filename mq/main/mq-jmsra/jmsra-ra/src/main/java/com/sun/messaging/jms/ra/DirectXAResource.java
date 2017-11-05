@@ -117,7 +117,7 @@ public class DirectXAResource implements XAResource {
     /**
      * State of this XAresource
      */
-    private volatile int resourceState = CREATED;
+    private int resourceState = CREATED;
 
     static {
 //        _loggerOC = Logger.getLogger(_lgrNameOutboundConnection);
