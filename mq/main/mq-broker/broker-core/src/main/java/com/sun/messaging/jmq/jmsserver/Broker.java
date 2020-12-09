@@ -17,6 +17,10 @@
  */
 
 /*
+ * Portions Copyright 2020 Payara Foundation and/or its affiliates.
+ */
+
+/*
  * @(#)Broker.java	1.287 07/10/07
  */
 
