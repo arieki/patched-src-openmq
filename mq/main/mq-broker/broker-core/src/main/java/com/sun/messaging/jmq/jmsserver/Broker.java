@@ -180,6 +180,8 @@ public class Broker implements GlobalErrorHandler, CommBroker {
 
     private String haltLogString = "HALT";
 
+    private static boolean exited = false;
+
     public static boolean isInProcess() {
         return runningInProcess;
     }
@@ -294,12 +296,14 @@ public class Broker implements GlobalErrorHandler, CommBroker {
             bkrEvtListener.brokerEvent(event);
             setBrokerEventListener(null);
         }
+       exited = true;
     }
 
     private Broker() {
         Globals.setCommBroker(this);
         version = Globals.getVersion();
         rb = Globals.getBrokerResources();
+        exited = false;
     }
 
     Properties convertArgs(String args[]) throws IllegalStateException, EmptyStackException {
@@ -1076,6 +1080,18 @@ public class Broker implements GlobalErrorHandler, CommBroker {
                     }
                     if (!(ex instanceof LoopbackAddressException)) {
                         logger.logStack(Logger.INFO, BrokerResources.X_INTERNAL_EXCEPTION, ex.getMessage(), ex);
+                    } else {
+                        // WORKAROUND - Payara FISH-642
+                        // Check if we've already destroyed the broker before attempting to fall back to non-clustered
+                        // Can't touch Globals here since we may have already wiped the global config - touching it
+                        // will potentially blow away pre-existing root logging config
+                        if (exited) {
+                            logger.log(Logger.ERROR, ex.getMessage());
+                            if (failStartThrowable != null) {
+                                failStartThrowable.initCause(new Exception(ex));
+                            }
+                            return (1);
+                        }
                     }
                     logger.log(Logger.WARNING, BrokerResources.I_USING_NOCLUSTER);
 
