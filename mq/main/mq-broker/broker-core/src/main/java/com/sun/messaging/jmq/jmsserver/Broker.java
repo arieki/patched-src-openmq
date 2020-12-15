@@ -1025,7 +1025,7 @@ public class Broker implements GlobalErrorHandler, CommBroker {
                             if (failStartThrowable != null) {
                                 failStartThrowable.initCause(new Exception(ex));
                             }
-                            return (1);
+                            return 1;
                         }
                     }
                     logger.log(Logger.WARNING, BrokerResources.I_USING_NOCLUSTER);
