@@ -251,26 +251,26 @@ public class EmbeddedBrokerRunner implements BrokerEventListener {
     /**
      * This method separates the parameter names from the values considering blank spaces
      *
-     * @param st StrinngTokenaziser containing the available tokens
+     * @param st StringTokenizer containing the available tokens
      * @param v  Reference of the Vector object to save the parameter and the value in consecutive order
      */
-    public static void processBrokerExtraArgs(StringTokenizer st, Vector v) {
-        StringBuffer bufferValue = new StringBuffer();
+    private static void processBrokerExtraArgs(StringTokenizer st, Vector<String> v) {
+        StringBuilder builderValue = new StringBuilder();
         while (st.hasMoreTokens()) {
             String s = st.nextToken();
-            if (s.contains("-") && parameterNames.contains(s)) {
-                if (bufferValue.length() > 0) {
-                    v.add(bufferValue.toString());
-                    bufferValue.delete(0, bufferValue.length());
+            if (parameterNames.contains(s)) {
+                if (builderValue.length() > 0) {
+                    v.add(builderValue.toString());
+                    builderValue.delete(0, builderValue.length());
                 }
                 v.add(s);
                 continue;
             }
-            bufferValue.append(s + " ");
+            builderValue.append(s + " ");
         }
 
-        if (bufferValue.length() > 0) {
-            v.add(bufferValue.toString());
+        if (builderValue.length() > 0) {
+            v.add(builderValue.toString());
         }
     }
 
