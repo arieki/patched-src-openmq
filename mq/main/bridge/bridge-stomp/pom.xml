@@ -24,7 +24,7 @@
     <parent>
        <groupId>org.glassfish.mq</groupId>
        <artifactId>bridge</artifactId>
-       <version>5.1.4.payara-p2</version>
+       <version>5.1.4.payara-p3-SNAPSHOT</version>
        <relativePath>../pom.xml</relativePath>
     </parent>
 
