@@ -17,11 +17,11 @@
 
 -->
 
-<connector xmlns="http://java.sun.com/xml/ns/j2ee"
+<connector xmlns="https://jakarta.ee/xml/ns/jakartaee"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
-           http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd"
-           version="1.5">
+           xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+           https://jakarta.ee/xml/ns/jakartaee/j2ee/connector_2_0.xsd"
+           version="2.0">
     <description>Oracle GlassFish(tm) Server Message Queue JMS Resource Adapter</description>
     <display-name>Oracle GlassFish(tm) Server Message Queue 5.1 Java EE Resource Adapter for JMS</display-name>
     <vendor-name>Oracle</vendor-name>

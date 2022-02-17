@@ -5,3 +5,9 @@ pom.xml.versionsBackup
 ### Other ###
 *.class
 
+/.idea/.gitignore
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
+/.idea/modules.xml
+/.idea/patched-src-openmq.iml
+/.idea/vcs.xml
